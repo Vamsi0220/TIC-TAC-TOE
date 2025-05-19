@@ -3,12 +3,19 @@ let resetBtn=document.querySelector("#Reset");
 let newGameBtn=document.querySelector("#ngame");
 let msgContainer=document.querySelector(".msg-container");
 let msg=document.querySelector("#msg");
+const gamearea=document.querySelector(".main");
 let turnO=true;
 let count=0;
 let scoreO = 0;
 let scoreX = 0;
 let scoreOEl = document.querySelector("#scoreO");
 let scoreXEl = document.querySelector("#scoreX");
+let playerO = "Player O";
+let playerX = "Player X";
+const startGameBtn = document.querySelector("#startGameBtn");
+const nameInputSection = document.querySelector(".name-inputs");
+document.querySelector("#nameO").innerText = playerO;
+document.querySelector("#nameX").innerText = playerX;
 
 const winPatterns=[
     [0, 1 ,2],
@@ -21,6 +28,21 @@ const winPatterns=[
     [2, 4, 6]
 ]
 
+startGameBtn.addEventListener("click", () => {
+    const playerOInput = document.querySelector("#playerO").value.trim();
+    const playerXInput = document.querySelector("#playerX").value.trim();
+
+    if (playerOInput) playerO = playerOInput;
+    if (playerXInput) playerX = playerXInput;
+
+     document.querySelector("#nameO").innerText = playerO;
+    document.querySelector("#nameX").innerText = playerX;
+
+    nameInputSection.classList.add("hide");
+    gamearea.classList.remove("hide");
+
+    resetGame();
+});
 const resetGame=()=>{
     turnO=true; 
     enableboxes(); 
@@ -63,11 +85,35 @@ const disableboxes=()=>{
         box.disabled=true;
     }
 };
+
+// const enableboxes=()=>{
+//     for(let box of boxes)
+//     {
+//         box.disabled=false;
+//         box.innerText="";
+//     }
+// };
+const enableboxes = () => {
+    for (let box of boxes) {
+        box.disabled = false;
+        box.innerText = "";
+        box.classList.remove("winner");  // Remove highlight
+    }
+};
+
+
+// const showWinner=(winner)=>{
+//     msg.innerText=`Congratulations, Winner is ${winner}`;
+//     msgContainer.classList.remove("hide"); 
+//     disableboxes();
+// };
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations, Winner is ${winner}`;
+    const winnerName = winner === "O" ? playerO : playerX;  
+    msg.innerText = `🎉 Congratulations, ${winnerName} wins!`;  
     msgContainer.classList.remove("hide");
     disableboxes();
 
+    // Update score
     if (winner === "O") {
         scoreO++;
         scoreOEl.innerText = scoreO;
@@ -76,16 +122,10 @@ const showWinner = (winner) => {
         scoreXEl.innerText = scoreX;
     }
 
+    // Highlight winning boxes
     highlightWinningBoxes(winner);
 };
-const enableboxes=()=>{
-    for(let box of boxes)
-    {
-        box.disabled=false;
-        box.innerText="";
-         box.classList.remove("winner");
-    }
-};
+
 const highlightWinningBoxes = (winnerSymbol) => {
     for (let pattern of winPatterns) {
         let [a, b, c] = pattern;
