@@ -86,13 +86,6 @@ const enableboxes=()=>{
          box.classList.remove("winner");
     }
 };
-
-
-const showWinner=(winner)=>{
-    msg.innerText=`Congratulations, Winner is ${winner}`;
-    msgContainer.classList.remove("hide"); 
-    disableboxes();
-};
 const highlightWinningBoxes = (winnerSymbol) => {
     for (let pattern of winPatterns) {
         let [a, b, c] = pattern;
