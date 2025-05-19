@@ -31,18 +31,50 @@ body{
     background-color: aliceblue;
 }
 .box.winner {
-  background-color: #90ee90; /* light green for winning boxes */
+  background-color: #90ee90;
   font-weight: bold;
   transition: background 0.3s;
 }
+.name-inputs {
+  margin-bottom: 20px;
+  text-align: center;
+}
 
+.name-inputs input {
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.name-inputs input:focus {
+  border-color: #4CAF50;
+}
+
+.name-inputs button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.name-inputs button:hover {
+  background-color: #45a049;
+}
 .scoreboard {
   margin: 10px 0;
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
-
 #Reset{
     padding:0.8rem;
     font-size: 1.2rem;
