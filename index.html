@@ -7,16 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Tic-Tac-Toe</h1>
     <div class="msg-container hide">
        <p id="msg">WINNER</p> 
        <button id="ngame">New game</button>
     </div>
-    <div class="scoreboard">
-      <p>Player O: <span id="scoreO">0</span></p>
-      <p>Player X: <span id="scoreX">0</span></p>
+    <div class="name-inputs">
+        <h1>Enter Player Names</h1>
+        <p>Player O:<input type="text" id="playerO" placeholder="Enter name for O"></p>
+        <p>Player X:<input type="text" id="playerX" placeholder="Enter name for X"></p>
+        <div class="rules">
+            <h2>Rules</h2>
+            <p>1. The game is played on a 3x3 grid.</p>
+            <p>2. Players take turns placing their marks (X or O) in empty squares.</p>
+            <p>3. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.</p>
+            <p>4. If all squares are filled and no player has three in a row, the game is a draw.</p>
+            <button id="startGameBtn">Start Game</button>
+        </div>
     </div>
-    <div class="main">
-        <h1>Tic Tac Toe</h1>
+    <div class="main hide">
+        <div class="scoreboard">
+            <p><span id="nameO">Player O</span>: <span id="scoreO">0</span></p>
+            <p><span id="nameX">Player X</span>: <span id="scoreX">0</span></p>
+        </div>
         <div class="container">
             <div class="game">
                 <button class="box"></button>
