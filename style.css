@@ -30,6 +30,18 @@ body{
     color: #365949;
     background-color: aliceblue;
 }
+.box.winner {
+  background-color: #90ee90; /* light green for winning boxes */
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.scoreboard {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
 
 #Reset{
     padding:0.8rem;
